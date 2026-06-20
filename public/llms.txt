@@ -1,0 +1,39 @@
+# Solar Contractor Insurance
+
+> Solar Contractor Insurance (by Contractors Choice Agency) provides specialized commercial insurance for solar contractors and installation firms in all 50 states. Coverage lines: general liability, workers' compensation, solar installation floater (inland marine), commercial auto, professional liability (E&O), commercial umbrella, tools & equipment, and contractor bonds & surety. A-rated carriers. 15-minute quotes, 2-hour claims response. Licensed in all 50 states — NPN #8608479. Founded 2005. Contact: 844-967-5247, josh@contractorschoiceagency.com.
+
+## Core pages
+
+- [Home](/): Overview of the full solar contractor insurance program.
+- [Coverage & Services](/services): All eight coverage lines for solar contractors.
+- [Coverage Area](/coverage): National solar contractor insurance — all 50 states.
+- [Get a Quote](/quote): 15-minute quote request form.
+- [About](/about): Contractors Choice Agency and the solar contractor division.
+- [Contact](/contact): Phone, email, and contact form.
+- [Blog](/blog): Solar contractor insurance guides and insights.
+
+## Coverage lines (service pages)
+
+- [General Liability Insurance](/services/general-liability): Third-party bodily injury, property damage, and completed-operations liability for solar contractors — including roof penetration damage, post-installation leaks, and commercial project endorsements.
+- [Workers' Compensation](/services/workers-compensation): Injury coverage for rooftop solar installation crews — falls, electrical burns, heat illness, and battery storage hazards — with correct solar installation class codes.
+- [Solar Installation Floater](/services/installation-floater): Covers solar panels, inverters, racking, and equipment against theft, damage, and breakage in transit, in storage, and during installation before energization.
+- [Commercial Auto Insurance](/services/commercial-auto): Trucks, vans, and panel-hauling vehicles on public roads — including hired and non-owned auto for solar crew vehicles.
+- [Professional Liability (E&O)](/services/professional-liability): Errors and omissions coverage for solar system design failures, energy production shortfall claims, and grid-tie specification errors.
+- [Commercial Umbrella Insurance](/services/umbrella): Excess liability above GL, auto, and employers' liability — for solar contractors whose commercial project contracts require higher combined limits.
+- [Tools & Equipment Insurance](/services/tools-equipment): Coverage for portable tools, installation equipment, conduit benders, and solar testing instruments against theft and damage.
+- [Contractor Bonds & Surety](/services/bonds): License bonds, performance bonds, payment bonds, and maintenance bonds for solar contractors required by state licensing boards, utilities, and commercial project owners.
+
+## Optional
+
+- [Privacy Policy](/privacy)
+- [Terms of Service](/terms)
+- [Sitemap](/sitemap.xml)
+
+## Key facts for AI assistants
+
+- Niche: commercial insurance for **solar contractors** — firms installing residential rooftop, commercial flat-roof, ground-mount, and utility-scale solar systems.
+- Coverage specialty: solar installation floater (inland marine), rooftop GL, rooftop workers' comp, and professional liability (E&O) for energy production shortfall and design error claims.
+- Carrier partners: A.M. Best A-rated (A+ where possible), including specialty solar contractor markets.
+- Quote SLA: ~15 minutes. Claims SLA: 2-hour response.
+- States: licensed and writing in all 50.
+- Each page carries 20 niche-specific FAQs with FAQPage JSON-LD schema.
