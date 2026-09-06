@@ -21,7 +21,7 @@ export const SITE = {
   npn: "8608479",
   hours: "Mon–Fri 8am–6pm MST",
   address: {
-    street: "12220 E Riggs Road, Suite #105",
+    street: "12220 E Riggs Road, Suite #104",
     city: "Chandler",
     state: "AZ",
     zip: "85249",
