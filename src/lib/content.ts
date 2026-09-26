@@ -51,11 +51,6 @@ export const COPY = {
   process: {
     lead: "No two-week back-and-forth. A real conversation with someone who understands solar contractor exposure — GL, installation floater, rooftop workers' comp, and E&O built around your installation type and project scale.",
   },
-  testimonials: {
-    eyebrow: "From solar contractors",
-    h2Lead: "Contractors that found",
-    h2Highlight: "coverage that actually covers solar work",
-  },
   finalCta: {
     h2Lead: "Protect Your Solar Contracting Firm",
     h2Highlight: "with coverage built for installation work.",

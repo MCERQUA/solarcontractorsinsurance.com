@@ -158,26 +158,6 @@ export const STATS = [
 /* ============================================================
    TESTIMONIALS
    ============================================================ */
-export const TESTIMONIALS = [
-  {
-    quote: "We had two claims in one year — a roof penetration leak post-install and a panel theft from a job site. Both were handled without drama. The installation floater and GL worked together exactly as they should. I won't use any other agency.",
-    name: "Tyler B.",
-    role: "Owner, Solar Installation Company",
-    location: "Phoenix, AZ",
-  },
-  {
-    quote: "A homeowner claimed their system produced 30% less than the projected output and sued us for the difference. Our E&O policy covered the defense and the settlement. Without professional liability, that would have been a company-ending claim.",
-    name: "Rachel M.",
-    role: "Director, Residential Solar Firm",
-    location: "San Diego, CA",
-  },
-  {
-    quote: "We do commercial rooftop and carport canopy solar. Our old agency didn't know what an installation floater was. CCA put together a program that actually covers how we work — including equipment in transit and during commissioning.",
-    name: "James P.",
-    role: "Commercial Solar Contractor",
-    location: "Austin, TX",
-  },
-] as const;
 
 /* ============================================================
    CREDENTIALS (for TrustBar, About, etc.)
