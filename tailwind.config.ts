@@ -15,8 +15,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        cream: "#FAFBFC",
-        sand: "#EEF4FA",
+        cream: "#FBF9F4",
+        sand: "#F4EFE6",
         white: "#FFFFFF",
         clay: {
           DEFAULT: "#E8670A",
@@ -34,17 +34,17 @@ const config: Config = {
           900: "#561F03",
         },
         sage: {
-          DEFAULT: "#1A73B5",
-          dark: "#125A90",
-          light: "#4A9DD4",
-          50: "#E6F0FA",
-          100: "#C2D9F2",
-          200: "#8AB9E4",
-          300: "#4A9DD4",
-          400: "#2884C5",
-          500: "#1A73B5",
-          600: "#125A90",
-          700: "#0C456E",
+          DEFAULT: "#3B6E48",
+          dark: "#2C5537",
+          light: "#6FA07C",
+          50: "#EEF5EF",
+          100: "#D6E8DA",
+          200: "#AED0B7",
+          300: "#6FA07C",
+          400: "#4F8A5E",
+          500: "#3B6E48",
+          600: "#2C5537",
+          700: "#1F3D28",
         },
         gold: {
           DEFAULT: "#F4C430",
@@ -58,11 +58,11 @@ const config: Config = {
           500: "#E8B010",
           600: "#D4A410",
         },
-        espresso: "#1A2030",
-        cocoa: "#3A4558",
-        mocha: "#6B7A90",
-        adobe: "#D0DBE8",
-        adobeDark: "#B8CAD9",
+        espresso: "#1C1410",
+        cocoa: "#3F3730",
+        mocha: "#6B625A",
+        adobe: "#E0D6CA",
+        adobeDark: "#CFC2B2",
       },
       fontFamily: {
         heading: ["var(--font-heading)", "Georgia", "serif"],
@@ -76,18 +76,18 @@ const config: Config = {
       },
       backgroundImage: {
         "sunrise-bands":
-          "linear-gradient(180deg, #FAFBFC 0%, #FEF3EA 40%, #EEF4FA 70%, #FAFBFC 100%)",
+          "linear-gradient(180deg, #FBF9F4 0%, #FEF3EA 40%, #F4EFE6 70%, #FBF9F4 100%)",
         "warm-radial":
-          "radial-gradient(circle at 30% 20%, rgba(232,103,10,0.10) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(26,115,181,0.08) 0%, transparent 55%)",
+          "radial-gradient(circle at 30% 20%, rgba(232,103,10,0.10) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(59,110,72,0.08) 0%, transparent 55%)",
         "clay-gradient": "linear-gradient(135deg, #E8670A 0%, #F08535 100%)",
-        "sage-gradient": "linear-gradient(135deg, #1A73B5 0%, #4A9DD4 100%)",
+        "sage-gradient": "linear-gradient(135deg, #3B6E48 0%, #6FA07C 100%)",
         "gold-gradient": "linear-gradient(135deg, #F4C430 0%, #F9D96A 100%)",
       },
       boxShadow: {
-        warm: "0 10px 40px -15px rgba(200,82,10,0.25), 0 4px 12px -6px rgba(26,32,48,0.08)",
-        "warm-lg": "0 30px 70px -20px rgba(200,82,10,0.30), 0 10px 30px -10px rgba(26,32,48,0.10)",
-        card: "0 2px 8px -2px rgba(26,32,48,0.06), 0 1px 3px -1px rgba(26,32,48,0.04)",
-        "card-hover": "0 20px 50px -15px rgba(26,115,181,0.20), 0 8px 20px -8px rgba(26,32,48,0.10)",
+        warm: "0 10px 40px -15px rgba(200,82,10,0.25), 0 4px 12px -6px rgba(28,20,16,0.08)",
+        "warm-lg": "0 30px 70px -20px rgba(200,82,10,0.30), 0 10px 30px -10px rgba(28,20,16,0.10)",
+        card: "0 2px 8px -2px rgba(28,20,16,0.06), 0 1px 3px -1px rgba(28,20,16,0.04)",
+        "card-hover": "0 20px 50px -15px rgba(59,110,72,0.20), 0 8px 20px -8px rgba(28,20,16,0.10)",
         arch: "inset 0 -8px 30px -10px rgba(232,103,10,0.10)",
       },
       keyframes: {
