@@ -26,8 +26,12 @@ export default function ContactPage() {
     setSubmitting(true);
     setError("");
     try {
-      await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ form_name: "contact", source: SITE.domain, ...formData }) });
-      setSubmitted(true);
+      const response = await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ form_name: "contact", source: SITE.domain, ...formData }) });
+      if (!response.ok) {
+        setError("Something went wrong — please try again or call us.");
+      } else {
+        setSubmitted(true);
+      }
     } catch {
       setError(COPY.contact.errorMessage);
     } finally {
