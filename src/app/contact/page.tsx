@@ -25,18 +25,29 @@ export default function ContactPage() {
     if (formData["bot-field"]) return;
     setSubmitting(true);
     setError("");
+    let captured = false;
     try {
       const response = await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ form_name: "contact", source: SITE.domain, ...formData }) });
-      if (!response.ok) {
-        setError("Something went wrong — please try again or call us.");
-      } else {
-        setSubmitted(true);
+      if (response.ok) {
+        const body = await response.json().catch(() => null);
+        // captured only if the leads API confirms ok:true and did not say stored:false
+        captured = !!(body && body.ok === true && body.stored !== false);
       }
-    } catch {
-      setError(COPY.contact.errorMessage);
-    } finally {
-      setSubmitting(false);
+    } catch {}
+    if (!captured) {
+      // webhook failed or did not store the lead: Netlify Forms fallback
+      try {
+        const fres = await fetch("/__forms.html", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ "form-name": "contact", ...(formData as Record<string, string>) }).toString(),
+        });
+        captured = fres.ok;
+      } catch {}
     }
+    if (captured) setSubmitted(true);
+    else setError(COPY.contact.errorMessage);
+    setSubmitting(false);
   };
 
   const inputClass = "w-full px-4 py-3 rounded-xl border border-adobe bg-cream/50 text-espresso placeholder-mocha/60 focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-all text-sm";

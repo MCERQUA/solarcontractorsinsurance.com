@@ -25,8 +25,8 @@ export default function QuotePage() {
     priorGrossSales: "", priorSubcontractorExpenses: "", priorEmployeeCount: "", priorEmployeePayroll: "",
     annualRevenue: "", estSubcontractorExpenses: "", estEmployeeCount: "", estEmployeePayroll: "", estMaterialCosts: "",
     subsHaveInsurance: "", subsInsuredPercent: "", needUninsuredSubCoverage: "",
-    coverageTypes: "", yearBusinessStarted: "", businessDescription: "", class_code_1: "", class_code_2: "", class_code_3: "", class_code_4: "", class_code_5: "", residential_vs_commercial: "", new_vs_existing_construction: "", largest_projects: "", currentCarrier: "", prior_policy_number: "", currentPolicyExpiration: "",
-    entityType: "", fein: "", tradeType: "", statesOfOperation: "", usesSubcontractors: "", fullTimeEmployees: "", partTimeEmployees: "", largestProjectValue: "", currentlyInsured: "", currentLimits: "", lossesLast3Years: "", lossCount: "", lossDescription: "", desiredEffectiveDate: "", additionalInsuredNeeded: "",
+    coverageTypes: "", yearBusinessStarted: "", businessDescription: "", class_code_1: "", class_code_2: "", class_code_3: "", class_code_4: "", class_code_5: "", residential_vs_commercial: "", new_vs_existing_construction: "", largest_projects: "", currentCarrier: "", currentPolicyExpiration: "",
+    entityType: "", fein: "", tradeType: "", statesOfOperation: "", usesSubcontractors: "", fullTimeEmployees: "", partTimeEmployees: "", physicalCounty: "", additionalInsuredName: "", certificateHolderName: "", certificateHolderAddress: "", largestProjectValue: "", currentlyInsured: "", currentLimits: "", lossesLast3Years: "", lossCount: "", lossDescription: "", desiredEffectiveDate: "", additionalInsuredNeeded: "",
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -41,18 +41,29 @@ export default function QuotePage() {
     if (formData["bot-field"]) return;
     setSubmitting(true);
     setError("");
+    let captured = false;
     try {
       const response = await fetch(WEBHOOK_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ form_name: "quote", source: SITE.domain, ...formData, name: `${formData.firstName} ${formData.lastName}`.trim() }) });
-      if (!response.ok) {
-        setError("Something went wrong — please try again or call us.");
-      } else {
-        setSubmitted(true);
+      if (response.ok) {
+        const body = await response.json().catch(() => null);
+        // captured only if the leads API confirms ok:true and did not say stored:false
+        captured = !!(body && body.ok === true && body.stored !== false);
       }
-    } catch {
-      setError(COPY.quote.errorMessage);
-    } finally {
-      setSubmitting(false);
+    } catch {}
+    if (!captured) {
+      // webhook failed or did not store the lead: Netlify Forms fallback
+      try {
+        const fres = await fetch("/__forms.html", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: new URLSearchParams({ "form-name": "quote", ...(formData as Record<string, string>) }).toString(),
+        });
+        captured = fres.ok;
+      } catch {}
     }
+    if (captured) setSubmitted(true);
+    else setError(COPY.quote.errorMessage);
+    setSubmitting(false);
   };
 
   const inputClass = "w-full px-4 py-3 rounded-xl border border-adobe bg-cream/50 text-espresso placeholder-mocha/60 focus:outline-none focus:border-clay focus:ring-2 focus:ring-clay/20 transition-all text-sm";
@@ -257,10 +268,6 @@ export default function QuotePage() {
                         <input type="text" name="currentCarrier" value={formData.currentCarrier} onChange={(e) => setFormData({ ...formData, currentCarrier: e.target.value })} className={inputClass} />
                       </div>
                       <div>
-                        <label className={labelClass}>Prior policy number</label>
-                        <input type="text" name="prior_policy_number" value={formData.prior_policy_number} onChange={(e) => setFormData({ ...formData, prior_policy_number: e.target.value })} className={inputClass} />
-                      </div>
-                      <div>
                         <label className={labelClass}>Prior policy expiration date</label>
                         <input type="date" name="currentPolicyExpiration" value={formData.currentPolicyExpiration} onChange={(e) => setFormData({ ...formData, currentPolicyExpiration: e.target.value })} className={inputClass} />
                       </div>
@@ -329,6 +336,10 @@ export default function QuotePage() {
                           <div><label htmlFor="lossCount" className={labelClass}>Number of losses (optional)</label><input id="lossCount" name="lossCount" type="number" value={formData.lossCount} onChange={handleChange} className={inputClass} /></div>
                         </div>
                         <div><label htmlFor="lossDescription" className={labelClass}>Loss description (optional)</label><textarea id="lossDescription" name="lossDescription" rows={3} value={formData.lossDescription} onChange={handleChange} className={`${inputClass} resize-none`} /></div>
+                        <div><label htmlFor="physicalCounty" className={labelClass}>County of the business address (optional)</label><input id="physicalCounty" name="physicalCounty" type="text" value={formData.physicalCounty} onChange={handleChange} className={inputClass} /></div>
+                        <div><label htmlFor="additionalInsuredName" className={labelClass}>Additional insured name (optional)</label><input id="additionalInsuredName" name="additionalInsuredName" type="text" value={formData.additionalInsuredName} onChange={handleChange} className={inputClass} /></div>
+                        <div><label htmlFor="certificateHolderName" className={labelClass}>Certificate holder name (optional)</label><input id="certificateHolderName" name="certificateHolderName" type="text" value={formData.certificateHolderName} onChange={handleChange} className={inputClass} /></div>
+                        <div><label htmlFor="certificateHolderAddress" className={labelClass}>Certificate holder address (optional)</label><input id="certificateHolderAddress" name="certificateHolderAddress" type="text" value={formData.certificateHolderAddress} onChange={handleChange} className={inputClass} /></div>
                         <div><label htmlFor="additionalInsuredNeeded" className={labelClass}>Additional insured needed? (optional)</label>
                           <select id="additionalInsuredNeeded" name="additionalInsuredNeeded" value={formData.additionalInsuredNeeded} onChange={handleChange} className={inputClass}><option value="">Select…</option><option value="Yes">Yes</option><option value="No">No</option></select>
                         </div>
